@@ -1,8 +1,6 @@
-sudo: required
-# tell Travis to run docker
 services:
   - docker
-# tell Travis to build image using Deckerfile.dev
 before_install:
   - docker build -t guanxin43/docker-react -f Dockerfile.dev .
-# tell Travis how to run test suite
+scripts:
+  - docker run guanxin43/docker-react npm run test -- --coverage
